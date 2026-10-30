@@ -14,9 +14,9 @@
     <a class="brand" href="#home"><span class="bolt">ϟ</span><span><strong>مراسيل الرقمية</strong><small>للخدمات الكهربائية والصيانة</small></span></a>
     <button class="menu-toggle" aria-label="فتح القائمة" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
     <nav class="nav-links">
-      <a href="#home">الرئيسية</a><a href="#services">خدماتنا</a><a href="#work">معرض الأعمال</a><a href="#about">من نحن</a><a href="#contact">تواصل معنا</a>
+      <a href="#home">الرئيسية</a><a href="#services">خدماتنا</a><a href="#work">معرض الأعمال</a><a href="#about">من نحن</a><a href="#request">اطلب خدمة</a><a href="#contact">تواصل معنا</a>
     </nav>
-    <a class="btn btn-small" href="#contact">اطلب خدمة</a>
+    <a class="btn btn-small" href="#request">اطلب خدمة</a>
   </div>
 </header>
 <main>
@@ -26,8 +26,8 @@
     <div class="hero-copy">
       <span class="eyebrow">حلول كهربائية موثوقة</span>
       <h1>مراسيل الرقمية<br><em>للخدمات الكهربائية والصيانة</em></h1>
-      <p>نقدم خدمات كهربائية وصيانة باهتمام بالتفاصيل، وجودة في التنفيذ، وحرص على السلامة.</p>
-      <div class="hero-actions"><a class="btn" href="#contact">تواصل معنا الآن <span>←</span></a><a class="btn btn-outline" href="#services">تعرّف على خدماتنا</a></div>
+      <p data-content="heroText">نقدم خدمات كهربائية وصيانة باهتمام بالتفاصيل، وجودة في التنفيذ، وحرص على السلامة.</p>
+      <div class="hero-actions"><a class="btn" href="#request">اطلب خدمة الآن <span>←</span></a><a class="btn btn-outline" href="#services">تعرّف على خدماتنا</a></div>
       <div class="hero-points"><span>✓ اهتمام بالسلامة</span><span>✓ جودة في العمل</span><span>✓ تواصل واضح</span></div>
     </div>
     <div class="hero-visual" aria-label="رسم توضيحي لأعمال الكهرباء">
@@ -48,7 +48,7 @@
 <section class="section services" id="services">
   <div class="container">
     <div class="section-heading"><span class="line"></span><div><h2>خدماتنا</h2><p>خدمات كهربائية متنوعة وفق احتياج العميل</p></div><span class="line"></span></div>
-    <div class="service-grid">
+    <div class="service-grid" id="serviceGrid">
       <article class="service-card"><div class="icon">ϟ</div><h3>صيانة الأعطال الكهربائية</h3><p>فحص الأعطال وتحديد أسبابها والمساعدة في معالجتها بأمان.</p></article>
       <article class="service-card"><div class="icon">▤</div><h3>اللوحات الكهربائية</h3><p>خدمات فحص وتجهيز وصيانة اللوحات الكهربائية.</p></article>
       <article class="service-card"><div class="icon">◉</div><h3>العدادات الكهربائية</h3><p>فحص مبدئي ومتابعة الملاحظات المتعلقة بالعدادات.</p></article>
@@ -71,13 +71,28 @@
 <section class="section about" id="about">
   <div class="container about-grid">
     <div class="about-mark"><span>ϟ</span><strong>مراسيل الرقمية</strong><small>للخدمات الكهربائية والصيانة</small><div class="about-lines"></div></div>
-    <div><span class="eyebrow">من نحن</span><h2>نضع الجودة والسلامة في مقدمة أولوياتنا</h2><p>مراسيل الرقمية مؤسسة تقدم خدمات في مجال الكهرباء والصيانة. نسعى إلى تقديم تجربة واضحة للعميل من أول تواصل وحتى متابعة الطلب، مع الاهتمام بجودة التنفيذ والالتزام بالمواعيد.</p>
+    <div><span class="eyebrow">من نحن</span><h2 data-content="aboutTitle">نضع الجودة والسلامة في مقدمة أولوياتنا</h2><p data-content="aboutText">مراسيل الرقمية مؤسسة تقدم خدمات في مجال الكهرباء والصيانة. نسعى إلى تقديم تجربة واضحة للعميل من أول تواصل وحتى متابعة الطلب، مع الاهتمام بجودة التنفيذ والالتزام بالمواعيد.</p>
       <div class="feature-row"><div><b>✓</b><span>اهتمام بالسلامة</span></div><div><b>✓</b><span>تواصل واضح</span></div><div><b>✓</b><span>حلول حسب الاحتياج</span></div></div>
     </div>
   </div>
 </section>
+<section class="section request-section" id="request">
+  <div class="container request-grid">
+    <div><span class="eyebrow">اطلب خدمة</span><h2>أرسل طلبك وسنتواصل معك</h2><p>اكتب بياناتك ونوع الخدمة المطلوبة، وسيقوم فريقنا بمراجعة الطلب والتواصل معك في أقرب وقت.</p></div>
+    <form class="request-form" id="requestForm">
+      <label>الاسم<input name="name" required maxlength="120" autocomplete="name"></label>
+      <label>رقم الجوال<input name="phone" required maxlength="30" inputmode="tel" autocomplete="tel"></label>
+      <label>نوع الخدمة<select name="service" id="serviceSelect" required><option value="">اختر الخدمة</option></select></label>
+      <label>الموقع / الحي<input name="location" maxlength="200"></label>
+      <label class="full">تفاصيل الطلب<textarea name="details" rows="4" maxlength="2000"></textarea></label>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn full" type="submit">إرسال الطلب</button>
+      <p class="form-msg full" id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
 <section class="contact-section" id="contact">
-  <div class="container contact-box"><div><span class="eyebrow">هل تحتاج إلى خدمة؟</span><h2>تواصل مع مراسيل الرقمية</h2><p>أضف رقم الهاتف وواتساب والبريد الإلكتروني الخاص بالمؤسسة لتسهيل تواصل العملاء.</p></div>
+  <div class="container contact-box"><div><span class="eyebrow">هل تحتاج إلى خدمة؟</span><h2>تواصل مع مراسيل الرقمية</h2><p id="contactText">يسعدنا تواصلك معنا عبر واتساب أو الاتصال الهاتفي.</p></div>
   <div class="contact-actions"><a class="btn" id="whatsappLink" href="#" target="_blank" rel="noopener">تواصل عبر واتساب</a><a class="btn btn-outline" id="phoneLink" href="#">اتصال هاتفي</a></div></div>
 </section>
 </main>
