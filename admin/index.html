@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#082542">
+  <title>لوحة التحكم | مراسيل الرقمية</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<div class="login" id="loginView" hidden>
+  <form class="login-card" id="loginForm">
+    <span class="bolt">ϟ</span>
+    <h1>لوحة التحكم</h1>
+    <p>مراسيل الرقمية للخدمات الكهربائية والصيانة</p>
+    <label>كلمة المرور<input type="password" name="password" required autocomplete="current-password" autofocus></label>
+    <button class="btn" type="submit">دخول</button>
+    <p class="msg err" id="loginMsg" role="alert"></p>
+    <a class="back" href="/">← العودة إلى الموقع</a>
+  </form>
+</div>
+
+<div class="app" id="appView" hidden>
+  <aside class="sidebar">
+    <a class="brand" href="/" target="_blank"><span class="bolt">ϟ</span><span><strong>مراسيل الرقمية</strong><small>لوحة التحكم</small></span></a>
+    <nav class="tabs">
+      <button data-tab="overview" class="active">▦ نظرة عامة</button>
+      <button data-tab="requests">☰ طلبات الخدمة <span class="badge" id="newBadge" hidden></span></button>
+      <button data-tab="content">✎ محتوى الموقع</button>
+    </nav>
+    <button class="logout" id="logoutBtn">تسجيل الخروج</button>
+  </aside>
+
+  <main class="main">
+    <!-- نظرة عامة -->
+    <section class="tab" id="tab-overview">
+      <header class="page-head"><h1>نظرة عامة</h1><p>ملخص الطلبات والزيارات خلال آخر 30 يومًا</p></header>
+      <div class="kpis" id="kpis"></div>
+      <div class="grid2">
+        <div class="card wide"><h2>الطلبات والزيارات اليومية</h2><div class="legend"><span><i class="sw s1"></i>الزيارات</span><span><i class="sw s2"></i>الطلبات</span></div><div id="dailyChart" class="chart"></div></div>
+        <div class="card"><h2>الطلبات حسب نوع الخدمة</h2><div id="serviceChart"></div></div>
+        <div class="card"><h2>أحدث الطلبات</h2><div id="latestList"></div></div>
+      </div>
+    </section>
+
+    <!-- الطلبات -->
+    <section class="tab" id="tab-requests" hidden>
+      <header class="page-head"><h1>طلبات الخدمة</h1><p>جميع الطلبات المرسلة من نموذج الموقع</p></header>
+      <div class="toolbar">
+        <input type="search" id="searchInput" placeholder="بحث بالاسم أو الجوال أو الخدمة...">
+        <div class="filters" id="statusFilters">
+          <button data-status="" class="active">الكل</button>
+          <button data-status="new">جديد</button>
+          <button data-status="in_progress">قيد التنفيذ</button>
+          <button data-status="done">مكتمل</button>
+          <button data-status="cancelled">ملغي</button>
+        </div>
+      </div>
+      <div id="requestsList" class="requests"></div>
+    </section>
+
+    <!-- المحتوى -->
+    <section class="tab" id="tab-content" hidden>
+      <header class="page-head"><h1>محتوى الموقع</h1><p>التعديلات تظهر في الموقع مباشرة بعد الحفظ</p></header>
+      <form id="contentForm" class="content-form">
+        <div class="card">
+          <h2>بيانات التواصل</h2>
+          <div class="fields3">
+            <label>رقم واتساب<small>بالصيغة الدولية بدون + أو مسافات، مثال: 9665XXXXXXXX</small><input name="whatsapp" inputmode="numeric" dir="ltr"></label>
+            <label>رقم الهاتف<small>مثال: +9665XXXXXXXX</small><input name="phone" inputmode="tel" dir="ltr"></label>
+            <label>البريد الإلكتروني<small>اختياري</small><input name="email" type="email" dir="ltr"></label>
+          </div>
+        </div>
+        <div class="card">
+          <h2>النصوص</h2>
+          <label>النص التعريفي في أعلى الصفحة<textarea name="heroText" rows="2"></textarea></label>
+          <label>عنوان قسم «من نحن»<input name="aboutTitle"></label>
+          <label>نص قسم «من نحن»<textarea name="aboutText" rows="4"></textarea></label>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>الخدمات</h2><button type="button" class="btn-ghost" id="addService">+ إضافة خدمة</button></div>
+          <div id="servicesEditor" class="services-editor"></div>
+        </div>
+        <div class="save-bar"><button class="btn" type="submit">حفظ التغييرات</button><span class="msg" id="contentMsg" role="status"></span></div>
+      </form>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" hidden></div>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
